@@ -24,4 +24,8 @@
 // algorithms
 #include <algorithm>  // sort, find_if
 
+// openal
+#include <AL/al.h>
+#include <AL/alc.h>
+
 #endif  // SWAY_SAPI_AL_PREREQS_HPP

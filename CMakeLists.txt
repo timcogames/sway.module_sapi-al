@@ -38,14 +38,13 @@ include("${MODULE_SAPI_AL_CMAKE_DIR}/modules/compiler/emscripten/set_modularize.
 # ---------------------------------------------------------------------------------
 # Project options
 # ---------------------------------------------------------------------------------
+option(GLOB_OPENAL_ROOT_DIR "OpenAL root directory" OFF)
 option(MODULE_SAPI_AL_LIB_TYPE "Build type library" OFF)
 option(MODULE_SAPI_AL_ENVIRONMENT "Environment variable" OFF)
 option(MODULE_SAPI_AL_COMPILATION "Compilation variable" OFF)
 option(MODULE_SAPI_AL_MT "Enable multithreading" OFF)
 option(MODULE_SAPI_AL_ALL_EXPORT "" OFF)
 option(MODULE_SAPI_AL_ENABLE_TESTS "Enable test builds" OFF)
-option(MODULE_SAPI_AL_ENABLE_COVERAGE "Enable coverage builds" OFF)
-option(MODULE_SAPI_AL_ENABLE_EXAMPLES "Enable example builds" OFF)
 option(MODULE_USE_AS_STUB "Enable test builds" OFF)
 
 # ---------------------------------------------------------------------------------
@@ -101,6 +100,11 @@ set_output_dir(${MODULE_SAPI_AL_BIN_DIR})
 # ---------------------------------------------------------------------------------
 include_directories("${X11_INC_DIRS}")
 include_directories("${MODULE_SAPI_AL_LIST_DIR}/lib/cxx/include")
+if(MODULE_SAPI_AL_ENABLE_TESTS)
+  include_directories("${GLOB_GTEST_ROOT_DIR}/include")
+  include_directories("${GLOB_GMOCK_ROOT_DIR}/include")
+  include_directories("${MODULE_SAPI_AL_LIST_DIR}/lib/cxx/tests")
+endif()
 include_directories("${MODULE_SAPI_AL_LIST_DIR}/submodules/sway.module_core/lib/cxx/include")
 include_directories("${MODULE_SAPI_AL_LIST_DIR}/submodules/sway.module_math/lib/cxx/include")
 # include_directories("${MODULE_SAPI_AL_LIST_DIR}/submodules/sway.module_sapi/api/cxx/include")
@@ -113,8 +117,8 @@ link_directories("${X11_LIB_DIRS}")
 find_package(OpenAL REQUIRED)
 
 if(OPENAL_FOUND)
-  include_directories(${OPENAL_INCLUDE_DIR})
-  link_directories(${OPENAL_LIBRARY})
+  include_directories("${GLOB_OPENAL_ROOT_DIR}/include")
+  link_directories("${GLOB_OPENAL_ROOT_DIR}/lib")
   message("OPENAL_INCLUDE_DIRS: ${OPENAL_INCLUDE_DIR}")
   message("OPENAL_LIBRARY_DIRS: ${OPENAL_LIBRARY}")
 endif()

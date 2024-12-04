@@ -7,6 +7,7 @@ cmake -D CMAKE_BUILD_TYPE=Release \
       -D GLOB_GTEST_LIB_DIR=/Users/<USER_NAME>/Documents/Third-party/googletest/build/lib \
       -D GLOB_GMOCK_ROOT_DIR=/Users/<USER_NAME>/Documents/Third-party/googletest/googlemock \
       -D GLOB_GMOCK_LIB_DIR=/Users/<USER_NAME>/Documents/Third-party/googletest/build/lib \
+      -D GLOB_OPENAL_ROOT_DIR=/opt/homebrew/opt/openal-soft \
       -D MODULE_SAPI_AL_LIB_TYPE=static \
       -D MODULE_SAPI_AL_ENABLE_TESTS=ON \
       -D MODULE_SAPI_AL_USE_GMOCK=OFF \

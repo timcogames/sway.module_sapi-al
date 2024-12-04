@@ -18,7 +18,7 @@ set(GMOCK_INC_DIR "${GMOCK_ROOT}/include")
 
 find_package(Threads REQUIRED)
 
-include_directories(${GTEST_INC_DIR} ${GMOCK_INC_DIR})
+include_directories(${GTEST_INC_DIR} ${GMOCK_INC_DIR} ${OPENAL_INCLUDE_DIR})
 
 # Получаем пути ко всем исходникам с тестами
 file(GLOB MODULE_SAPI_AL_SOURCE_TESTS ${PROJECT_SOURCE_DIR}/*.cpp)
@@ -26,6 +26,7 @@ file(GLOB MODULE_SAPI_AL_SOURCE_TESTS ${PROJECT_SOURCE_DIR}/*.cpp)
 add_executable(${META_SAPI_AL_EXENAME_TESTS} ${MODULE_SAPI_AL_SOURCE_TESTS} "${GTEST_SRC_DIR}/gtest_main.cc")
 target_link_libraries(${META_SAPI_AL_EXENAME_TESTS}
   module_sapi_al_obj module_core_obj
+  OpenAL 
   pthread
   ${GLOB_GTEST_LIB_DIR}/libgtest.a ${GLOB_GTEST_LIB_DIR}/libgmock.a ${CMAKE_DL_LIBS})
 
