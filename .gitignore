@@ -1,0 +1,14 @@
+# project output files
+/build
+
+/**/node_modules
+
+bin/*
+!bin/assets/
+
+bin/assets/*
+!bin/assets/web/
+!bin/assets/dtp/
+
+# osx noise
+.DS_Store
