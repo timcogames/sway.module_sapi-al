@@ -1,9 +1,8 @@
 #ifndef SWAY_SAPI_AL_AUDIOMANAGER_HPP
 #define SWAY_SAPI_AL_AUDIOMANAGER_HPP
 
-#include <sway/sapi/al/bufferinfo.hpp>
+#include <sway/sapi/al/interface/sourcedescriptor.hpp>
 #include <sway/sapi/al/prereqs.hpp>
-#include <sway/sapi/al/sourceinfo.hpp>
 
 NS_BEGIN_SWAY()
 NS_BEGIN(sapi)
@@ -19,8 +18,7 @@ public:
 #pragma endregion
 
 private:
-  BufferInfo bufferInfo_;
-  SourceInfo sourceInfo_;
+  SourceDescriptor sourceInfo_;
 };
 
 NS_END()  // namespace sapi

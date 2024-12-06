@@ -2,7 +2,7 @@
 #include <sway/math.hpp>
 #include <sway/sapi/al.hpp>
 
-#include <google/unit/mockoalhelper.hpp>
+#include <google/unit/bufferhelperstub.hpp>
 
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
@@ -13,10 +13,9 @@ NS_SHORT_SWAY()
 NS_SHORT(sapi)
 
 TEST(AudioManagerTest, ctor_default) {
-  testing::NiceMock<MockOALHelper> mock;
-  EXPECT_CALL(mock, generateBuffers(testing::_, testing::_)).Times(1);
+  testing::NiceMock<BufferHelperStub> mock;
+  EXPECT_CALL(mock, generate(testing::_, testing::_)).Times(1);
 
-  auto sample = std::make_unique<Sample>(mock);
-  sample->setup();
-  ASSERT_NE(nullptr, sample);
+  auto buf = std::make_unique<OALBuffer>(mock);
+  ASSERT_NE(nullptr, buf);
 }
