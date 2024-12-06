@@ -12,7 +12,7 @@
 NS_SHORT_SWAY()
 NS_SHORT(sapi)
 
-TEST(AudioManagerTest, ctor_default) {
+TEST(BufferTest, ctor) {
   testing::NiceMock<BufferHelperStub> mock;
   EXPECT_CALL(mock, generate(testing::_, testing::_)).Times(1);
 

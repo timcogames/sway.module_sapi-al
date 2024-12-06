@@ -4,12 +4,15 @@
 #include <sway/core.hpp>
 #include <sway/math.hpp>
 
+#include <chrono>
 #include <cstddef>  // size_t
 #include <functional>  // bind
 #include <iostream>  // cout
 #include <memory>  // unique_ptr, shared_ptr
+#include <mutex>
 #include <optional>
 #include <string>
+#include <thread>
 #include <utility>  // move
 
 // containers
